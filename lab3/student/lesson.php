@@ -12,13 +12,7 @@
 		}
 	}
 	$id = decrypt($_SESSION['passed']);
-	$qry = "select * from accesses where student_id = '".$id."'";
-	$result = mysqli_query($db_server, $qry);
-	$fetched = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	if(!empty($fetched) && $fetched[0]['student_id']==$id){
-		menus($id);
-	}
-
+	
 	if(isset($_POST['lesson'])){
 		$qry = "INSERT INTO classes(student_id,lesson_id)  VALUES ('".decrypt($_SESSION['passed'])."','".$_POST['lesson_id']."');";
 		$result = mysqli_query($db_server, $qry);

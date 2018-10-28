@@ -1,17 +1,12 @@
 <?php
 	include "header.php";
-	if(!isset($_GET['id']) || !isset($_SESSION['passed']) || md5(decrypt($_SESSION['passed'])) !== $_GET['id'] ){
+	if(!isset($_GET['id']) || !isset($_SESSION['passed']) || md5(decrypt($_SESSION['passed'])) !== $_GET['id']  || $_SESSION['access_lvl']<=1){
 		header("Location: index.php?error=2");
 		die();
 	}
 	else{
 		$id = decrypt($_SESSION['passed']);
-		$qry = "select * from accesses where student_id = '".$id."'";
-		$result = mysqli_query($db_server, $qry);
-		$fetched = mysqli_fetch_all($result, MYSQLI_ASSOC);
-		if(!empty($fetched) && $fetched[0]['student_id']==$id){
-			menus($id);
-		}
+
 		echo'<a class="btn btn-secondary btn-lg" role="button" href="welcome.php?id='.md5($id).'">өөрийн мэдээлэл</a>';
 		echo "</div></head>";
 		$qry = "Select * from students";

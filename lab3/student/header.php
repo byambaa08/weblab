@@ -42,3 +42,8 @@
 		}
     ?>
     	<h1>Оюутны мэдээллийн систем</h1>    
+    	<?php
+	    	if(isset($_SESSION['access_lvl']) && $_SESSION['access_lvl']>1){
+				menus(decrypt($_SESSION['passed']));
+			}
+		?>

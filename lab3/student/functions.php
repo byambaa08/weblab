@@ -38,4 +38,11 @@
     function menus($id){
         echo'<a class="btn btn-secondary btn-lg" role="button" href="list.php?id='.md5($id).'">Оюутнуудын жагсаалт</a>';
     }
+    function checkPassword($pwd) {
+        if (strlen($pwd) < 6 || !preg_match("#[0-9]+#", $pwd) || !preg_match("#[A-Z]+#", $pwd) || !preg_match("#[a-z]+#", $pwd) ) {
+            return False;
+        }     
+
+    return True;
+}
 ?>

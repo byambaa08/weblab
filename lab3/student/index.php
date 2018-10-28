@@ -15,16 +15,19 @@
 		<?php
 			if(isset($_GET['error']) && $_GET['error']==2)
 				echo "<p><font color='#e60000'>Ямар нэгэн юм буруу боллоо!</font></p>";	
+			if(isset($_GET['success']) && $_GET['success']==1)
+				echo "<p ><center class = 'text-success'>Амжилттай бүртгэж авлаа. Та нэвтрэх боломжтой болсон.</center</p>";	
 		?>
 		<form action="process.php" method="POST">
 			<p>
   				<div class="input-group-prepend">
 					<?php
 						if(isset($_GET['id'])){
-							echo '<input type="text" id="user" name="user" value='.$_GET['id'].' placeholder="Оюутны ID" class="form-control" aria-describedby="basic-addon1" required>';
+							echo '<input type="text" id="user" name="user" value='.$_GET['id'].' placeholder="Хэрэглэгчийн ID" class="form-control" aria-describedby="basic-addon1" required>';
 						}
 						else	
-							echo '<input type="text" id="user" name="user" placeholder="Оюутны ID" class="form-control" aria-describedby="basic-addon1" required>';
+							echo '<input type="text" id="user" name="user" placeholder="Хэрэглэгчийн ID" class="form-control" aria-describedby="basic-addon1" required>';
+
 					?>
 				</div>
 			</p>
@@ -41,6 +44,9 @@
 			<p>
 				<input type="submit" id="btn" value="Нэвтрэх" class="form-control">
 			</p>
+			<p>
+                <a href="signup.php" class="btn btn-primary form-control">Бүртгүүлэх</a>
+            </p>
 			
 		</form>
 		

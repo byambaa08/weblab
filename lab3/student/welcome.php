@@ -12,12 +12,8 @@
 		}
 	}
 	$id = decrypt($_SESSION['passed']);
-	$qry = "select * from accesses where student_id = '".$id."'";
-	$result = mysqli_query($db_server, $qry);
-	$fetched = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	if(!empty($fetched) && $fetched[0]['student_id']==$id){
-		menus($id);
-	}
+
+
 	echo'<a class="btn btn-secondary btn-lg" role="button" href="welcome.php?id='.md5($id).'">өөрийн мэдээлэл</a>';
 	echo "</div></head>";
 
@@ -70,7 +66,7 @@
 			   	echo '</td>';}
 		   	echo '<td>';
 		    	echo '<form action="password.php" method="GET">';
-					echo '<input type="hidden" name="id" value='.$id.' >';
+					echo '<input type="hidden" name="id" value='.md5($id).' >';
 		    		echo '<input type="submit" id="btn btn-outline-primary" value="Нууц үг солих" class="btn btn-outline-primary">';
 		    	echo '</form>';
 		   	echo '</td>';
