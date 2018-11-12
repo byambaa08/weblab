@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="css/bootstrap.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap-grid.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap-reboot.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+	<style>
+	p {
+	  text-align: center;
+	  font-size: 60px;
+	  margin-top: 0px;
+
+	}
+	table{
+	    border-collapse: collapse;
+	}
+	.center {
+	    margin-left:auto; 
+	    margin-right:auto;
+  	}
+	</style>
+</head>
+<body>
+
+	<p id="demo">15s</p>
+	<script>
+		var started = 0;
+		function die(){
+			document.body.innerHTML = '';
+			alert("Suck on you!!!");
+		}
+
+		function check(clicked_id){
+			var cnt = 0;
+			for(var l = 0 ; l < 56;l ++){
+				var number = parseInt(clicked_id)+56;
+				
+				if(document.getElementById(clicked_id).getAttribute("bgcolor") == document.getElementById(number).getAttribute("bgcolor") ){
+					cnt++;	
+				}
+			}
+			if(cnt == 56){
+				document.body.innerHTML = '';
+				alert("You lucky bastard!");
+			}
+			var s=0;
+		}
+		var number=0;
+		var color = "#FFFFFF";
+		var red="#FFFFFF";
+		var black="#FFFFFF";
+		var yellow="#FFFFFF";
+		var white="#FFFFFF";
+		var blue="#FFFFFF";
+	    var seconds =15;
+		function start(){
+				started=1;
+				red="#ff0000";
+				black="#000000";
+				yellow="#ffff00";
+				white="#FFFFFF";
+				blue="#0000ff";
+			var x = setInterval(function() {
+			    seconds --;
+			    document.getElementById("demo").innerHTML = seconds + "s ";
+			    
+			    if (seconds < 0) {
+			        clearInterval(x);
+			        die();
+			    }
+			}, 1000);
+		}
+
+		function setcolor(clicked_id){
+			 document.getElementById(clicked_id).setAttribute("bgcolor",color);
+		}
+			document.write("<table class='center'>");
+				document.write("<tr>");
+					document.write("<td>");
+						document.write("<table border='1' class='table table-bordered'>");
+							for (var i = 0; i < 8; i++) {
+								document.write("<tr>");
+								for (var j = 0; j <7; j++) {
+									document.write("<td id='"+number+"' height=20 width=40 onclick=' check(this.id); setcolor(this.id); return false;'></td>");
+									number++;
+								}
+								document.write("</tr>");
+							}
+						document.write("</table>");
+					document.write("</td>");
+
+					document.write("<td>");
+						document.write("<table border='1' class='table table-bordered'>");
+							for (var i = 0; i < 8; i++) {
+								document.write("<tr>");
+								for (var j = 0; j <7; j++) {
+									document.write("<td id='"+number+"' height=20 width=40 ></td>");
+									number++;
+								}
+								document.write("</tr>");
+							}
+						document.write("</table>");
+					document.write("</td>");
+				document.write("</tr>");
+			document.write("</table>");
+
+			document.write("<br>");
+
+			for(var i = 57; i<111;i++){
+				if(i>=57 && i<62 ){
+					document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+				}
+				if(i>=106 && i<111 ){
+					document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+				}
+				if(i==72 || i==74 ){
+					document.getElementById(i).setAttribute("bgcolor",'#000000');
+				}
+				if(i>=93 && i<96 ){
+					document.getElementById(i).setAttribute("bgcolor",'#ff0000');
+				}
+				switch(i){
+					case 63:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 69:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 70:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 76:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 77:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 83:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 84:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 90:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 91:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 97:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 98:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+					case 104:
+						document.getElementById(i).setAttribute("bgcolor",'#ffff00');
+						break;
+				}
+			}
+
+			document.write("<table border=1 class='center'>");
+				document.write("<td height=50 width=50 bgcolor='#ff0000' onclick='color = red'; return false;'></td>");
+				document.write("<td height=50 width=50 bgcolor='#000000' onclick='color = black'; return false;'></td>");
+				document.write("<td height=50 width=50 bgcolor='#ffff00' onclick='color = yellow'; return false;'></td>");
+				document.write("<td height=50 width=50 bgcolor='#FFFFFF' onclick='color = white'; return false;'></td>");
+				document.write("<td height=50 width=50 bgcolor='#0000ff' onclick='color = blue'; return false;'></td>");
+			document.write("</table>");
+			document.write("<div style='text-align:center;'>");
+				document.write("<button class='button' onclick='start();'>PLAY</button>");
+			document.write("</div>");
+	</script>
+</body>
+</html> 
