@@ -15,6 +15,9 @@
 		<?php
 			if(isset($_GET['error']) && $_GET['error']==2)
 				echo "<p><font color='#e60000'>Ямар нэгэн юм буруу боллоо!</font></p>";	
+
+			if(isset($_GET['error']) && $_GET['error']==3)
+				echo "<p><font color='#e60000'>Та систем админтай холбогдоно уу!</font></p>";	
 			if(isset($_GET['success']) && $_GET['success']==1)
 				echo "<p ><center class = 'text-success'>Амжилттай бүртгэж авлаа. Та нэвтрэх боломжтой болсон.</center</p>";	
 		?>
@@ -25,9 +28,13 @@
 						if(isset($_GET['id'])){
 							echo '<input type="text" id="user" name="user" value='.$_GET['id'].' placeholder="Хэрэглэгчийн ID" class="form-control" aria-describedby="basic-addon1" required>';
 						}
-						else	
+						else if(isset($_COOKIE['username'])){
+							echo '<input type="text" id="user" name="user" value='.$_COOKIE['username'].' placeholder="Хэрэглэгчийн ID" class="form-control" aria-describedby="basic-addon1" required>';
+						}	
+						else {
 							echo '<input type="text" id="user" name="user" placeholder="Хэрэглэгчийн ID" class="form-control" aria-describedby="basic-addon1" required>';
-
+						}
+							
 					?>
 				</div>
 			</p>

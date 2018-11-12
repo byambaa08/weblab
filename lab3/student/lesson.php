@@ -22,7 +22,6 @@
 		$result = mysqli_query($db_server, $qry);
 		// $result = mysqli_query($db_server, $qry);
 	}
-	echo'<a class="btn btn-secondary btn-lg" role="button" href="welcome.php?id='.md5($id).'">өөрийн мэдээлэл</a>';
 	echo "</div></head>";
 
 	$qry = "SELECT * FROM classes where student_id = '".$id."';";

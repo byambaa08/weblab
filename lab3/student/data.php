@@ -45,7 +45,8 @@
 			student_id   		VARCHAR(12) ,
 			staff_id	   		VARCHAR(12) ,
 			access_lvl			INT(1),
-			password   			VARCHAR(255) NOT NULL
+			password   			VARCHAR(255) NOT NULL,
+			access			    INT(1)
 		);";
 		$staff_qry = "
 			CREATE TABLE staffs (
@@ -143,10 +144,10 @@
 			                        		mysqli_query($db_server, $value);
 			                        	}
 
-			                        	$qry = "INSERT INTO users(student_id, access_lvl ,password) VALUES ('15b1seas0318' , 9, '".md5('admin')."');";
+			                        	$qry = "INSERT INTO users(student_id, access_lvl ,password,access) VALUES ('15b1seas0318' , 9, '".md5('admin')."', 1);";
 			                        	mysqli_query($db_server, $qry);
 
-			                        	$qry = "INSERT INTO users(student_id, access_lvl ,password) VALUES ('15b1seas0472' , 0, '".md5('admin')."');";
+			                        	$qry = "INSERT INTO users(student_id, access_lvl ,password,access) VALUES ('15b1seas0472' , 0, '".md5('admin')."', 1);";
 			                        	mysqli_query($db_server, $qry);
 									}
 								}

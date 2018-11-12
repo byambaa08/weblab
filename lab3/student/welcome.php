@@ -12,9 +12,10 @@
 		}
 	}
 	$id = decrypt($_SESSION['passed']);
+	$id_right = substr($id, 0, $_SESSION['length']);
+	setcookie('username',$id_right, time() + (86400 * 30));
 
 
-	echo'<a class="btn btn-secondary btn-lg" role="button" href="welcome.php?id='.md5($id).'">өөрийн мэдээлэл</a>';
 	echo "</div></head>";
 
 	$qry = "select * from students where id = '".$id."'";
