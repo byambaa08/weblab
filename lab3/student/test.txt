@@ -34,12 +34,12 @@
 			alert("Suck on you!!!");
 		}
 
-		function check(clicked_id){
+		function check(){
 			var cnt = 0;
 			for(var l = 0 ; l < 56;l ++){
-				var number = parseInt(clicked_id)+56;
+				var number = parseInt(l)+56;
 				
-				if(document.getElementById(clicked_id).getAttribute("bgcolor") == document.getElementById(number).getAttribute("bgcolor") ){
+				if(document.getElementById(l).getAttribute("bgcolor") == document.getElementById(number).getAttribute("bgcolor") ){
 					cnt++;	
 				}
 			}
@@ -85,7 +85,7 @@
 							for (var i = 0; i < 8; i++) {
 								document.write("<tr>");
 								for (var j = 0; j <7; j++) {
-									document.write("<td id='"+number+"' height=20 width=40 onclick=' check(this.id); setcolor(this.id); return false;'></td>");
+									document.write("<td id='"+number+"' height=20 width=40 onclick='setcolor(this.id); check(); return false;'></td>");
 									number++;
 								}
 								document.write("</tr>");
