@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="css/bootstrap.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap-grid.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap-reboot.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<style>
+		p , td {
+		  text-align: center;
+		  font-size: 60px;
+		  margin-top: 0px;
+		  text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<table>
+	<td>
+		<a id="demo">15s</a>
+		<a>&nbsp;</a>
+	</td>
+	<td>
+		<a id="lives"></a>
+	</td>
+	</table>
+	<table>
+		<td>
+			<img src="hangman0.png" id="hangman" width="500" height="600">
+		</td>
+		<td>
+			<table border="1" align="center">
+				<tr>
+					<p id="question"></p>
+				</tr>
+				<tr>
+	<script>
+		function getRandomInt(max) {
+		  return Math.floor(Math.random() * Math.floor(max));
+		}
+		var nq=3;
+		var lives=5;
+		var seconds=15;
+		var pic =1;
+		function die(){
+			alert("Ta yalagdlaa!!!");
+			window.location.replace("hangman.html");
+		}
+		function win(){
+			alert("Ta yallaa!!!");
+			window.location.replace("hangman.html");
+		}
+		document.getElementById("lives").innerHTML="lives="+lives;
+		var questions = ["When did world war II end?(year)", "What is my web lab teacher's name?", "Spider man's identity?"];
+		var answers = ["1945", "javkhlan","peter parker"];
+		var random = getRandomInt(3);
+		var q= [random];
+		document.getElementById("question").innerHTML= questions[random];
+		var alphabets=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0"," "];
+
+		for(var i=0; i<answers[2].length; i++){
+			document.write("<a id="+i+"></a>");
+		}
+		for(var i=0; i<answers[random].length; i++){
+			document.getElementById(i).innerHTML = "_";
+		}
+		document.write("<br>");
+		document.write("<br>");
+		document.write("</tr>");
+		document.write("<tr>");
+		var remains=answers[random].length;
+		function check(alphabet){
+			if (answers[random].indexOf(alphabet) > -1)
+				{
+					for(var j=0; j<answers[random].length;j++){
+						if(answers[random][j]==alphabet){
+				  			document.getElementById(j).innerHTML=alphabet;
+				  			remains--;
+				  		}
+					}
+					if(remains<=0){
+						nq--;
+						if(nq<=0)
+							 setTimeout(win(), 500);
+						random = getRandomInt(3);
+						while(q.includes(random)==true){
+							random = getRandomInt(3);
+							if(q.length==3){
+								break;
+							}
+						}
+						q.push(random);
+						document.getElementById("question").innerHTML= questions[random];
+						for(var i=0; i<answers[random].length; i++){
+							document.getElementById(i).innerHTML = "_";
+						}
+						for(var i=answers[random].length; i<answers[2].length; i++){
+							document.getElementById(i).innerHTML = " ";
+						}
+						remains=answers[random].length;
+						seconds=15;
+
+					}
+				}
+			else{
+				lives--;
+				document.getElementById("lives").innerHTML="lives="+lives;
+				document.getElementById("hangman").setAttribute("src","hangman"+pic+".png");
+				pic++;
+				if(lives <= 0){
+					die();
+				}
+			}
+		}
+		for(var i=0; i<alphabets.length; i++){
+			document.write("<td id='"+alphabets[i]+"' height=20 width=40 onclick='check(this.id)'>"+alphabets[i]+"</td>");
+		
+			if(i>9 && i%13==0){
+				document.write("</tr>");
+				document.write("<tr>");
+			}
+		}
+		var x = setInterval(function() {
+		    seconds --;
+		    document.getElementById("demo").innerHTML = seconds + "s ";
+		    
+		    if (seconds < 0) {
+		        clearInterval(x);
+		        die();
+		    }
+		}, 1000);
+	</script>
+</tr>
+</table>
+</td>
+</table>
+</body>
+</html>
