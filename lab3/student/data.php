@@ -68,7 +68,7 @@
 						if (mysqli_query($db_server, $users_qry)) {
 							if (mysqli_query($db_server, "ALTER TABLE users ADD FOREIGN KEY (student_id) REFERENCES students(id);")) {
 							if (mysqli_query($db_server, "ALTER TABLE users ADD FOREIGN KEY (staff_id) REFERENCES staffs(id);")) {
-								if (mysqli_query($db_server,"ALTER TABLE classes ADD FOREIGN KEY (lesson_id) REFERENCES lesson(id);")) {
+								if (mysqli_query($db_server,"ALTER TABLE classes ADD FOREIGN KEY (lesson_id) REFERENCES lessons(id);")) {
 									if (mysqli_query($db_server,"ALTER TABLE classes ADD FOREIGN KEY (student_id) REFERENCES students(id);")) {
 										$insert_qry = array("INSERT INTO lessons(id,name,credit) VALUES (
 			                        		'CSII200', 
