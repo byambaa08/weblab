@@ -123,8 +123,7 @@
 		}
 		else if( $_POST['type']=='staff'){
 			$qry = "SELECT id from staffs where id='".$_POST['id']."';";
-			$insert_qry = "INSERT INTO users(staff_id, access_lvl ,password, access) VALUES ('".$_POST['id']."' , 1, '".md5($_POST['password']).", 1);";
-
+			$insert_qry = "INSERT INTO users(staff_id, access_lvl ,password, access) VALUES ('".$_POST['id']."' , 1, '".md5($_POST['password'])."', 1);";
 		}
 	    $result = mysqli_query($db_server, $qry);
 		$fetched = mysqli_fetch_all($result, MYSQLI_ASSOC);
