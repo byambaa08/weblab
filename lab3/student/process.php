@@ -1,5 +1,8 @@
 <?php
 	include "header.php";
+
+// Check name availability
+	
 // Login шалгах
 	if( isset($_POST['user']) ){
 
@@ -9,7 +12,6 @@
 		$username = filter_var($username, FILTER_SANITIZE_STRING);
 		$password = stripcslashes($password);
 		$password = filter_var($password, FILTER_SANITIZE_STRING);
-		
 		$qry = "SELECT * FROM users where student_id='".$username."';";
     	$result = mysqli_query($db_server, $qry);
 	    $fetched = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -26,6 +28,10 @@
 	  		header("Location: index.php?error=1&id=".$_POST['user']);
 			die();
 	    }
+	    else if($_POST['captcha']!=$_SESSION["code"]){
+	    	header("Location: index.php?error=4&id=".$_POST['user']);
+			die();
+	    }
 	    else{
 	    	if($fetched[0]['access'] == 0){
 		  		header("Location: index.php?error=3&id=".$_POST['user']);
@@ -34,7 +40,6 @@
 	    	$_SESSION['passed'] = encrypt($username);
 	    	$_SESSION['length'] = strlen($username);
 	    	$_SESSION['access_lvl'] = $fetched[0]['access_lvl'];
-	    	// if($is_student == 0);
 		    	header("Location: welcome.php?id=".encrypt($username));
 		}
 	}

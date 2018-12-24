@@ -47,9 +47,30 @@
 				if(isset($_GET['error']) && $_GET['error']==1){
 					echo "<p><font color='#e60000'>Нууц үг эсвэл Оюутны ID буруу байна!</font></p>";
 				}
+				if(isset($_GET['error']) && $_GET['error']==4){
+					echo "<p><font color='#e60000'>Зурган код дээрх текстийг буруу оруулсан байна!</font></p>";
+				}
 			?>
 			<p>
-				<input type="submit" id="btn" value="Нэвтрэх" class="form-control">
+				<div id="imgdiv">
+							<img id="img" src="captcha.php">
+				</div>
+				
+			</p>
+			<p>
+				<table>
+					<td>
+						<input id="captcha1" name="captcha" type="text" class="form-control" required>
+					</td>
+					<td>
+						<img id="reload" src="reload.png" style="width:40px;height:40px;">
+						
+					</td>
+				</table>
+				
+			</p>
+			<p>
+			<input type="submit" id="btn" value="Нэвтрэх" class="form-control">
 			</p>
 			<p>
                 <a href="signup.php" class="btn btn-primary form-control">Бүртгүүлэх</a>

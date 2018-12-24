@@ -21,8 +21,10 @@
 				<input type="hidden" name="add_student" value="add_student">
 				<?php echo '<input type="hidden" name="id" value='.$_GET['id'].'>'; ?>
   				<p><div class="input-group-prepend">
-					<input type="text" id="student_id" name="student_id" placeholder="Оюутны ID" class="form-control" aria-describedby="basic-addon1" required>
+					<input type="text" id="student_id" name="student_id" placeholder="Оюутны ID" class="form-control" aria-describedby="basic-addon1" required onkeyup="checkAvailability()">
+
 				</div></p>
+				<p id='user-availability-status'><p/>
   				<div class="input-group-prepend">
 					<input type="text" id="user" name="lname" placeholder="Овог" class="form-control" aria-describedby="basic-addon1" required>
 				</div>
@@ -40,7 +42,7 @@
 					</select>
 				</div>
 			</p>
-			<p class = 'text-success'>Төрсөн өдөр</font></p>
+			<p class = 'text-success'>Төрсөн өдөр</p>
 			<p>
   				<div class="input-group-prepend">
 					<input type="date" id="user" name="dob" class="form-control" aria-describedby="basic-addon1" required>
